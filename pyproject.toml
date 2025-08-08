@@ -1,0 +1,36 @@
+[project]
+name = "sentinel-playground"
+version = "0.1.0"
+description = "A playground for working with Sentinel satellite imagery using free alternatives to SentinelHub"
+readme = "README.md"
+dependencies = [
+    "sentinelsat>=1.2.1",  # Keep for legacy script
+    "boto3>=1.26.0",
+    "geopandas>=0.13.0",
+    "shapely>=2.0.0",
+    "matplotlib>=3.6.0",
+    "numpy>=1.26.0",
+    "pandas>=2.2.3",
+    "requests>=2.28.0",    # For CDSE API calls
+]
+requires-python = ">=3.12"
+[[project.authors]]
+name = "Nick Burns"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pyright]
+extends = "../../pyrightconfig.json"
+
+[tool.uv]
+python-downloads = "manual"
+dev-dependencies = [
+    "pyright==1.1.382.post1",
+    "pytest==8.3.3",
+    "uvicorn==0.30.6",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["sentinel_playground"]
